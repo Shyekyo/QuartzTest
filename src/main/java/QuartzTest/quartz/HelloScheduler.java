@@ -19,7 +19,14 @@ public class HelloScheduler {
 	final static Logger logger = LoggerFactory.getLogger(HelloScheduler.class);
 	public static void main(String[] args) throws SchedulerException {
 		// 创建一个jobdetail实例绑定job
-		JobDetail jobDetail = JobBuilder.newJob(HelloJob.class).withIdentity("myJob", "group1").build();
+		JobDetail jobDetail = JobBuilder.newJob(HelloJob.class).
+				withIdentity("myJob", "group1").
+				build();
+		logger.info("jobdetail name ： {}",jobDetail.getKey().getName());
+		logger.info("jobdetail group ： {}",jobDetail.getKey().getGroup());
+		logger.info("jobdetail description ： {}",jobDetail.getDescription());
+		logger.info("jobdetail jobclass ： {}",jobDetail.getJobClass());
+
 		// 创建一个trigger实例，定义该job立即执行，并且每个两秒执行重复执行一次
 		Trigger trigger = TriggerBuilder.newTrigger().
 				withIdentity("myTrigger", "group1").
