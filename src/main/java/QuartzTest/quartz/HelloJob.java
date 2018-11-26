@@ -23,7 +23,7 @@ public class HelloJob implements Job{
 		this.key1 = key1;
 	}
 
-	@Override
+
 	public void execute(JobExecutionContext context) throws JobExecutionException {
 		//打印当前的执行时间
 		Date date = new Date();
